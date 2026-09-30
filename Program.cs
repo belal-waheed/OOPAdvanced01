@@ -43,6 +43,7 @@
             //student.Value = "Ahmed";
             //Console.WriteLine(student.Key + " - " + student.Value);
             #endregion
+
             #region Q4
             //Q4: What is a generic method? Write Swap<T> method.
             /*
@@ -63,13 +64,13 @@
             #region Q5
             //Q5: Write a generic method FindMax<T> that finds maximum value
 
-            int maxNumber = Utility.FindMax(50, 100);
-            Console.WriteLine("Q5 Result:");
-            Console.WriteLine("The max number is: " + maxNumber);
+            //int maxNumber = Utility.FindMax(50, 100);
+            //Console.WriteLine("Q5 Result:");
+            //Console.WriteLine("The max number is: " + maxNumber);
 
-            // It works with strings too because strings are IComparable
-            string maxWord = Utility.FindMax("Apple", "Banana");
-            Console.WriteLine("The max word is: " + maxWord);
+            //// It works with strings too because strings are IComparable
+            //string maxWord = Utility.FindMax("Apple", "Banana");
+            //Console.WriteLine("The max word is: " + maxWord);
             #endregion
 
             #region Q6
@@ -85,9 +86,9 @@
             /*
             The 'struct' constraint forces the generic type parameter to be a value type.
             */
-            ValueStore<int> numberStore = new ValueStore<int>();
-            numberStore.Data = 99;
-            Console.WriteLine("Q7 Result: ValueStore contains " + numberStore.Data);
+            //ValueStore<int> numberStore = new ValueStore<int>();
+            //numberStore.Data = 99;
+            //Console.WriteLine("Q7 Result: ValueStore contains " + numberStore.Data);
 
             // the line below would cause an error because string is not a struct"not value type"
             // ValueStore<string> badStore = new ValueStore<string>();
@@ -98,12 +99,36 @@
             /*
             The 'class' constraint forces the generic type parameter to be a reference type.
             */
-            ReferenceStore<string> textStore = new ReferenceStore<string>();
-            textStore.Data = "Hello Reference!";
-            Console.WriteLine("Q8 Result: ReferenceStore contains " + textStore.Data);
+            //ReferenceStore<string> textStore = new ReferenceStore<string>();
+            //textStore.Data = "Hello Reference!";
+            //Console.WriteLine("Q8 Result: ReferenceStore contains " + textStore.Data);
 
             // the line below would cause an error because int is not a class"not reference type"
             // ReferenceStore<int> badStore2 = new ReferenceStore<int>();
+            #endregion
+
+            #region Q9
+            //Q9: What is the 'new()' constraint? Write an example.
+            /*
+            The 'new()' constraint ensures the type has an empty constructor, 
+            so you can create new objects of that type inside your generic class.
+            */
+            //Factory<Document> docFactory = new Factory<Document>();
+            //Document myDoc = docFactory.CreateInstance();
+
+            //Console.WriteLine("Q9 Result: Factory created a " + myDoc.Title);
+            #endregion
+
+            #region Q10
+            //Q10: What is the interface constraint? Write an example.
+            /*
+            The interface constraint forces the generic type to implement a specific interface.
+            */
+            //Console.WriteLine("\nQ10 Result:");
+            //Printer<Document> docPrinter = new Printer<Document>();
+
+            // This works because Document implements IPrintable
+            //docPrinter.PrintItem(myDoc);
             #endregion
 
         }
