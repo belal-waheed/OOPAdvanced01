@@ -1,43 +1,6 @@
 ﻿namespace OOPAdvanced01
 {
-    //Q2
-    public class Container<T>
-    {
-        private List<T> items = new List<T>();
 
-        // Add this property to make the count public
-        public int Count
-        {
-            get { return items.Count; }
-        }
-
-        public void Add(T item)
-        {
-            items.Add(item);
-        }
-
-        public T Get(int index)
-        {
-            return items[index];
-        }
-    }
-
-    // Q3: The Pair class
-    public class Pair<TKey, TValue>
-    {
-        public TKey Key { get; set; }
-        public TValue Value { get; set; }
-    }
-    // Q4: The Utility class for your generic methods
-    public class Utility
-    {
-        public static void Swap<T>(ref T a, ref T b)
-        {
-            T temp = a;
-            a = b;
-            b = temp;
-        }
-    }
     internal class Program
     {
        
@@ -95,6 +58,26 @@
             //Console.WriteLine("\nAfter Swap:");
             //Console.WriteLine("x is now: " + x);
             //Console.WriteLine("y is now: " + y);
+            #endregion
+
+            #region Q5
+            //Q5: Write a generic method FindMax<T> that finds maximum value
+
+            int maxNumber = Utility.FindMax(50, 100);
+            Console.WriteLine("Q5 Result:");
+            Console.WriteLine("The max number is: " + maxNumber);
+
+            // It works with strings too because strings are IComparable
+            string maxWord = Utility.FindMax("Apple", "Banana");
+            Console.WriteLine("The max word is: " + maxWord);
+            #endregion
+
+            #region Q6
+            //Q6: What is a generic interface? Write IRepository<T>.
+            /*
+            A generic interface is a blueprint that uses a placeholder type. 
+            Any class that implements it will decide what the exact data type is.
+            */
             #endregion
 
         }
