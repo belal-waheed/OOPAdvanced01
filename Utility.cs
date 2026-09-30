@@ -12,7 +12,6 @@ namespace OOPAdvanced01
             a = b;
             b = temp;
         }
-        // Q5: FindMax needs a "constraint" (IComparable) so C# knows how to compare them
         public static T FindMax<T>(T a, T b) where T : IComparable<T>
         {
             if (a.CompareTo(b) > 0)

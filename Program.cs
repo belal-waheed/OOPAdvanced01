@@ -80,6 +80,32 @@
             */
             #endregion
 
+            #region Q7
+            //Q7: What is the 'struct' constraint? Write an example.
+            /*
+            The 'struct' constraint forces the generic type parameter to be a value type.
+            */
+            ValueStore<int> numberStore = new ValueStore<int>();
+            numberStore.Data = 99;
+            Console.WriteLine("Q7 Result: ValueStore contains " + numberStore.Data);
+
+            // the line below would cause an error because string is not a struct"not value type"
+            // ValueStore<string> badStore = new ValueStore<string>();
+            #endregion
+
+            #region Q8
+            //Q8: What is the 'class' constraint? Write an example.
+            /*
+            The 'class' constraint forces the generic type parameter to be a reference type.
+            */
+            ReferenceStore<string> textStore = new ReferenceStore<string>();
+            textStore.Data = "Hello Reference!";
+            Console.WriteLine("Q8 Result: ReferenceStore contains " + textStore.Data);
+
+            // the line below would cause an error because int is not a class"not reference type"
+            // ReferenceStore<int> badStore2 = new ReferenceStore<int>();
+            #endregion
+
         }
     }
 }
