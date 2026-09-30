@@ -156,6 +156,30 @@
             #endregion
 
 
+            #region Q13
+            //Q13: What does the 'default' keyword do in generics?
+            /*
+            It returns the default value of a type (0 for value types, null for reference types) 
+            because you can't assume 'T' can accept a null value.
+            */
+            Console.WriteLine("Q13 Result:");
+            Console.WriteLine("Default int is: " + default(int));
+            Console.WriteLine("Default bool is: " + default(bool));
+            #endregion
+
+            #region Q14
+            //Q14: Write a SafeList<T> that returns default when the index is invalid.
+            Console.WriteLine("\nQ14 Result:");
+            SafeList<int> safeNumbers = new SafeList<int>();
+            safeNumbers.Add(50); // This is at index 0
+
+            Console.WriteLine("Valid index (0): " + safeNumbers.Get(0));
+
+            // Index 99 doesn't exist! A normal list would crash.
+            // Our SafeList will just safely return the default int (which is 0).
+            Console.WriteLine("Invalid index (99): " + safeNumbers.Get(99));
+            #endregion
+
         }
     }
 }
