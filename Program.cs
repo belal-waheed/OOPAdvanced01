@@ -186,13 +186,13 @@
             Covariance (out) allows you to use a more specific type than requested, as long as it's only being returned.
             Example: A Dog Producer can be stored inside an Animal Producer variable.
             */
-            Console.WriteLine("Q15 Result:");
-            IProducer<Dog> myDogProducer = new DogProducer();
+            //Console.WriteLine("Q15 Result:");
+            //IProducer<Dog> myDogProducer = new DogProducer();
 
-            IProducer<Animal> myAnimalProducer = myDogProducer;
+            //IProducer<Animal> myAnimalProducer = myDogProducer;
 
-            Animal newPet = myAnimalProducer.Produce();
-            Console.WriteLine("Produced: " + newPet.Name);
+            //Animal newPet = myAnimalProducer.Produce();
+            //Console.WriteLine("Produced: " + newPet.Name);
             #endregion
 
             #region Q16
@@ -201,13 +201,40 @@
             Contravariance (in) allows you to use a less specific (base) type than requested, as long as it's only an input.
             Example: An Animal Consumer can be stored inside a Dog Consumer variable.
             */
-            Console.WriteLine("\nQ16 Result:");
-            IConsumer<Animal> generalAnimalConsumer = new AnimalConsumer();
+            //Console.WriteLine("\nQ16 Result:");
+            //IConsumer<Animal> generalAnimalConsumer = new AnimalConsumer();
 
-            // MAGIC HERE: Storing IConsumer<Animal> inside IConsumer<Dog>
-            IConsumer<Dog> specificDogConsumer = generalAnimalConsumer;
+            //IConsumer<Dog> specificDogConsumer = generalAnimalConsumer;
 
-            specificDogConsumer.Consume(new Dog());
+            //specificDogConsumer.Consume(new Dog());
+            #endregion
+
+            #region Q17
+            //Q17: What is the difference between covariance and contravariance?
+            /*
+            Covariance (out): Used for OUTPUTS (returns). Allows using a MORE specific type. 
+                              (for ex: returning a Dog instead of an Animal).
+            Contravariance (in): Used for INPUTS (parameters). Allows using a LESS specific type. 
+                                 (for ex: a method that accepts an Animal can be given a Dog).
+            */
+            #endregion
+
+            #region Q18
+            //Q18: How do static members work in generic types?
+            /*
+            Static members are NOT shared across the whole generic class. 
+            Each data type (int, string) gets its own separate static copy!
+            */
+            //Console.WriteLine("\nQ18 Result:");
+
+            //Tracker<int> t1 = new Tracker<int>();
+            //Tracker<int> t2 = new Tracker<int>();
+            //Console.WriteLine("Tracker<int> count: " + Tracker<int>.InstanceCount); // Prints 2
+
+            //Tracker<string> t3 = new Tracker<string>();
+            //Console.WriteLine("Tracker<string> count: " + Tracker<string>.InstanceCount); // Prints 1
+
+            // Notice how string didn't continue counting from 2? It has its own static variable!
             #endregion
         }
     }

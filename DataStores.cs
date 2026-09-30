@@ -88,5 +88,14 @@ namespace OOPAdvanced01
             return newAnimal;
         }
     }
-
+    //  Q18  
+    public class Tracker<T>
+    {
+        // This static variable is UNIQUE for every different data type 'T'
+        public static int InstanceCount = 0;
+        public Tracker()
+        {
+            InstanceCount++;
+        }
+    }
 }
