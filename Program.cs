@@ -236,6 +236,38 @@
 
             // Notice how string didn't continue counting from 2? It has its own static variable!
             #endregion
+
+            #region Q19
+            //Q19: How can you inherit from a generic class?
+            /*
+            1. Keep the child class generic (e.g., class GenericChildBox<T> : BaseBox<T>)
+            2. Give the base class a specific type (e.g., class StringBox : BaseBox<string>)
+            */
+            Console.WriteLine("Q19 Result:");
+            StringBox sBox = new StringBox();
+            sBox.Item = "I am locked to a string!";
+            Console.WriteLine(sBox.Item);
+            #endregion
+
+            #region Q20
+            //Q20 Create a generic Cache<TKey, TValue> with expiration support.
+            Console.WriteLine("\nQ20 Result:");
+
+            Cache<int, string> userCache = new Cache<int, string>();
+
+            // Add a user that lives for only 2 seconds
+            userCache.Add(1, "Ahmed", TimeSpan.FromSeconds(2));
+
+            Console.WriteLine("Right away, is user 1 in cache? " + userCache.Contains(1));
+            Console.WriteLine("Value: " + userCache.Get(1));
+
+            Console.WriteLine("\nWaiting 3 seconds for it to expire...");
+            // Pause the program for 3 seconds to let the cache expire
+            System.Threading.Thread.Sleep(3000);
+
+            Console.WriteLine("After waiting, is user 1 in cache? " + userCache.Contains(1));
+            Console.WriteLine("Value: " + userCache.Get(1)); // Will print nothing because it expired!
+            #endregion
         }
     }
 }
