@@ -162,24 +162,53 @@
             It returns the default value of a type (0 for value types, null for reference types) 
             because you can't assume 'T' can accept a null value.
             */
-            Console.WriteLine("Q13 Result:");
-            Console.WriteLine("Default int is: " + default(int));
-            Console.WriteLine("Default bool is: " + default(bool));
+            //Console.WriteLine("Q13 Result:");
+            //Console.WriteLine("Default int is: " + default(int));
+            //Console.WriteLine("Default bool is: " + default(bool));
             #endregion
 
             #region Q14
             //Q14: Write a SafeList<T> that returns default when the index is invalid.
-            Console.WriteLine("\nQ14 Result:");
-            SafeList<int> safeNumbers = new SafeList<int>();
-            safeNumbers.Add(50); // This is at index 0
+            //Console.WriteLine("\nQ14 Result:");
+            //SafeList<int> safeNumbers = new SafeList<int>();
+            //safeNumbers.Add(50); // This is at index 0
 
-            Console.WriteLine("Valid index (0): " + safeNumbers.Get(0));
+            //Console.WriteLine("Valid index (0): " + safeNumbers.Get(0));
 
             // Index 99 doesn't exist! A normal list would crash.
             // Our SafeList will just safely return the default int (which is 0).
-            Console.WriteLine("Invalid index (99): " + safeNumbers.Get(99));
+            //Console.WriteLine("Invalid index (99): " + safeNumbers.Get(99));
             #endregion
 
+            #region Q15
+            //Q15: What is covariance? Explain the 'out' keyword.
+            /*
+            Covariance (out) allows you to use a more specific type than requested, as long as it's only being returned.
+            Example: A Dog Producer can be stored inside an Animal Producer variable.
+            */
+            Console.WriteLine("Q15 Result:");
+            IProducer<Dog> myDogProducer = new DogProducer();
+
+            IProducer<Animal> myAnimalProducer = myDogProducer;
+
+            Animal newPet = myAnimalProducer.Produce();
+            Console.WriteLine("Produced: " + newPet.Name);
+            #endregion
+
+            #region Q16
+            //Q16: What is contravariance? Explain the 'in' keyword.
+            /*
+            Contravariance (in) allows you to use a less specific (base) type than requested, as long as it's only an input.
+            Example: An Animal Consumer can be stored inside a Dog Consumer variable.
+            */
+            Console.WriteLine("\nQ16 Result:");
+            IConsumer<Animal> generalAnimalConsumer = new AnimalConsumer();
+
+            // MAGIC HERE: Storing IConsumer<Animal> inside IConsumer<Dog>
+            IConsumer<Dog> specificDogConsumer = generalAnimalConsumer;
+
+            specificDogConsumer.Consume(new Dog());
+            #endregion
         }
     }
 }
