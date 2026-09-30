@@ -131,6 +131,31 @@
             //docPrinter.PrintItem(myDoc);
             #endregion
 
+
+            #region Q11
+            //Q11: What is the base class constraint? Write an example.
+            /*
+            The base class constraint forces the generic type to inherit from a specific class.
+            */
+            //Console.WriteLine("Q11 Result:");
+            //Dog myDog = new Dog();
+            //AnimalShelter<Dog> shelter = new AnimalShelter<Dog>();
+            //shelter.Adopt(myDog);
+            #endregion
+
+            #region Q12
+            //Q12: How do you apply multiple constraints? Write an example.
+            /*
+            You combine them with commas: where T : BaseClass, IInterface, new()
+            */
+            //Console.WriteLine("\nQ12 Result:");
+            //AdvancedShelter<SmartDog> advancedShelter = new AdvancedShelter<SmartDog>();
+
+            // This will create the SmartDog AND call its Print method automatically
+            //advancedShelter.CreateAndPrint();
+            #endregion
+
+
         }
     }
 }

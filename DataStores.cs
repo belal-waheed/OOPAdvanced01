@@ -46,5 +46,47 @@ namespace OOPAdvanced01
             Console.WriteLine("Printing: " + Title);
         }
     }
+    //  Q11  
+    public class Animal
+    {
+        public string Name { get; set; } = "Unknown Animal";
+    }
+
+    public class Dog : Animal
+    {
+        public Dog() { Name = "holaoo the Dog"; }
+    }
+
+    // This generic class only accepts Animals (or classes that inherit from Animal)
+    public class AnimalShelter<T> where T : Animal
+    {
+        public void Adopt(T animal)
+        {
+            // We can safely access .Name because we know it's an Animal
+            Console.WriteLine("Adopted: " + animal.Name);
+        }
+    }
+
+    //  Q12  
+    // SmartDog inherits from Animal AND implements IPrintable (from Q10)
+    public class SmartDog : Animal, IPrintable
+    {
+        public SmartDog() { Name = "Smart Dog"; }
+        public void Print()
+        {
+            Console.WriteLine("Printing animal profile: " + Name);
+        }
+    }
+
+    // Multiple Constraints: Must be an Animal, MUST implement IPrintable, MUST have an empty constructor!
+    public class AdvancedShelter<T> where T : Animal, IPrintable, new()
+    {
+        public T CreateAndPrint()
+        {
+            T newAnimal = new T(); 
+            newAnimal.Print();     
+            return newAnimal;
+        }
+    }
 
 }
